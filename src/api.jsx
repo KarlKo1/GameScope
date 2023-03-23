@@ -15,4 +15,3 @@ const POPULAR_GAMES = `games?key=${
 }&dates=${lastYear},${currentDate}&ordering=-rating&page_size=10`;
 
 export const popularGamesURL = () => `${BASE_URL}${POPULAR_GAMES}`;
-console.log(popularGamesURL);

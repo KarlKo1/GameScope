@@ -4,9 +4,11 @@ import App from "./App";
 import { configureStore } from "@reduxjs/toolkit";
 import rootReducers from "./reducers";
 import { Provider } from "react-redux";
+import thunk from "redux-thunk";
 
 const store = configureStore({
   reducer: rootReducers,
+  thunk,
 });
 
 ReactDOM.createRoot(document.getElementById("root")).render(
