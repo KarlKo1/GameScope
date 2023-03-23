@@ -1,8 +1,18 @@
 import axios from "axios";
-import { popularGamesURL } from "../api";
+import { popularGamesURL, newGamesURL, upcomingGamesURL } from "../api";
 
 export const loadGames = () => async (dispatch) => {
-  const popularData = await axios.get(popularGamesURL(), {
+  const popularGamesData = await axios.get(popularGamesURL(), {
+    params: {
+      key: import.meta.env.VITE_RAWG_KEY,
+    },
+  });
+  const newGamesData = await axios.get(newGamesURL(), {
+    params: {
+      key: import.meta.env.VITE_RAWG_KEY,
+    },
+  });
+  const upcomingGamesData = await axios.get(upcomingGamesURL(), {
     params: {
       key: import.meta.env.VITE_RAWG_KEY,
     },
@@ -10,7 +20,9 @@ export const loadGames = () => async (dispatch) => {
   dispatch({
     type: "FETCH_GAMES",
     payload: {
-      popularGames: popularData.data.results,
+      popularGames: popularGamesData.data.results,
+      newGames: newGamesData.data.results,
+      upcomingGames: upcomingGamesData.data.results,
     },
   });
 };
