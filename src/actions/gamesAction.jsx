@@ -17,12 +17,15 @@ export const loadGames = () => async (dispatch) => {
       key: import.meta.env.VITE_RAWG_KEY,
     },
   });
-  dispatch({
-    type: "FETCH_GAMES",
-    payload: {
-      popularGames: popularGamesData.data.results,
-      newGames: newGamesData.data.results,
-      upcomingGames: upcomingGamesData.data.results,
+  dispatch(
+    {
+      type: "FETCH_GAMES",
+      payload: {
+        popularGames: popularGamesData.data.results,
+        newGames: newGamesData.data.results,
+        upcomingGames: upcomingGamesData.data.results,
+      },
     },
-  });
+    []
+  );
 };
