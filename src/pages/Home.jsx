@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { loadGames } from "../actions/gamesAction";
 import styled from "styled-components";
 import { motion } from "framer-motion";
+import imageUrl from "../assets/logo.png";
 
 //Components
 import Game from "../components/Game";
@@ -16,9 +17,12 @@ const Home = () => {
   const { upcomingGames, popularGames, newGames } = useSelector(
     (state) => state.games
   );
-  console.log(upcomingGames);
   return (
     <div>
+      <Heading>
+        <img src={imageUrl} alt="logo" />
+        <h1>GameScope</h1>
+      </Heading>
       <GameList>
         <h2>Upcoming Games</h2>
         <Games>
@@ -60,6 +64,20 @@ const Home = () => {
     </div>
   );
 };
+
+const Heading = styled(motion.div)`
+  padding: 0rem 10rem;
+  display: flex;
+  align-items: center;
+  h1 {
+    padding-top: 5rem 0rem;
+    color: #d30d0d;
+  }
+
+  img {
+    max-width: 15%;
+  }
+`;
 
 const GameList = styled(motion.div)`
   padding: 0rem 10rem;
