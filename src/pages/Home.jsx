@@ -13,7 +13,9 @@ import GameDetail from "../components/GameDetail";
 const Home = () => {
   const location = useLocation();
   const pathId = location.pathname.split("/")[2];
-
+  if (!pathId) {
+    document.body.style.overflow = "auto";
+  }
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(loadGames());
