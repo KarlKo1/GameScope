@@ -23,3 +23,9 @@ const UPCOMING_GAMES = `games?key=${
 export const popularGamesURL = () => `${BASE_URL}${POPULAR_GAMES}`;
 export const newGamesURL = () => `${BASE_URL}${NEW_GAMES}`;
 export const upcomingGamesURL = () => `${BASE_URL}${UPCOMING_GAMES}`;
+export const gameDetailsURL = (game_id) =>
+  `${BASE_URL}games/${game_id}.json?&key=${import.meta.env.VITE_RAWG_KEY}`;
+export const gameScreenshotURL = (game_id) =>
+  `${BASE_URL}games/${game_id}/screenshots?&key=${
+    import.meta.env.VITE_RAWG_KEY
+  }`;
