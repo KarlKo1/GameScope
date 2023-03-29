@@ -13,6 +13,9 @@ import nintendo from "../assets/nintendo.svg";
 import apple from "../assets/apple.svg";
 import gamepad from "../assets/gamepad.svg";
 import macos from "../assets/macos.svg";
+import starEmpty from "../assets/star-empty.svg";
+import starHalf from "../assets/star-half.svg";
+import starFull from "../assets/star-full.svg";
 
 const GameDetail = ({ pathId }) => {
   const navigate = useNavigate();
@@ -47,6 +50,23 @@ const GameDetail = ({ pathId }) => {
     }
   };
 
+  const getStars = () => {
+    const stars = [];
+    const rating = game.rating;
+    let starShape = "";
+    for (let i = 1; i <= 5; i++) {
+      if (i <= rating) {
+        starShape = starFull;
+      } else if (i > rating && i - rating < 0.5) {
+        starShape = starHalf;
+      } else {
+        starShape = starEmpty;
+      }
+      stars.push(<img src={starShape} alt="star" key={i}></img>);
+    }
+    return stars;
+  };
+
   const { screenShots, game, isLoading } = useSelector(
     (state) => state.details
   );
@@ -59,6 +79,7 @@ const GameDetail = ({ pathId }) => {
               <div className="rating">
                 <motion.h3 layoutId={`title ${pathId}`}>{game.name}</motion.h3>
                 <p>Rating: {game.rating}</p>
+                {getStars()}
               </div>
               <Info>
                 <h3>Platforms</h3>
@@ -133,6 +154,11 @@ const Stats = styled(motion.div)`
   display: flex;
   align-items: center;
   justify-content: space-between;
+  img {
+    width: 2rem;
+    height: 2rem;
+    display: inline;
+  }
 `;
 
 const Info = styled(motion.div)`
