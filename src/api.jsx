@@ -29,3 +29,7 @@ export const gameScreenshotURL = (game_id) =>
   `${BASE_URL}games/${game_id}/screenshots?&key=${
     import.meta.env.VITE_RAWG_KEY
   }`;
+export const searchedGameURL = (game_name) =>
+  `${BASE_URL}games?key=${
+    import.meta.env.VITE_RAWG_KEY
+  }&search=${game_name}&page_size=9`;

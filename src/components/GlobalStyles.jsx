@@ -48,6 +48,11 @@ const GlobalStyles = createGlobalStyle`
         text-decoration: none;
         color: black;
     }
+
+    input {
+        font-weight: bold;
+        font-family: "Roboto", sans-serif;
+    }
 `;
 
 export default GlobalStyles;

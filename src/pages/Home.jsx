@@ -21,21 +21,32 @@ const Home = () => {
     dispatch(loadGames());
   }, [dispatch]);
 
-  const { upcomingGames, popularGames, newGames } = useSelector(
+  const { upcomingGames, popularGames, newGames, searchedGames } = useSelector(
     (state) => state.games
   );
-
   return (
     <div>
-      <Heading>
-        <img src={imageUrl} alt="logo" />
-        <h1>GameScope</h1>
-      </Heading>
       <GameList>
         <LayoutGroup type="crossfade">
           <AnimatePresence>
             {pathId && <GameDetail pathId={pathId} />}
           </AnimatePresence>
+          {searchedGames.length > 0 && (
+            <div className="searched">
+              <h2>Searched Games</h2>
+              <Games>
+                {searchedGames.map((game) => (
+                  <Game
+                    key={game.id}
+                    name={game.name}
+                    released={game.released}
+                    id={game.id}
+                    image={game.background_image}
+                  />
+                ))}
+              </Games>
+            </div>
+          )}
           <h2>Upcoming Games</h2>
           <Games>
             {upcomingGames.map((game) => (
@@ -77,20 +88,6 @@ const Home = () => {
     </div>
   );
 };
-
-const Heading = styled(motion.div)`
-  padding: 0rem 10rem;
-  display: flex;
-  align-items: center;
-  h1 {
-    padding-top: 5rem 0rem;
-    color: #d30d0d;
-  }
-
-  img {
-    max-width: 15%;
-  }
-`;
 
 const GameList = styled(motion.div)`
   padding: 0rem 10rem;
