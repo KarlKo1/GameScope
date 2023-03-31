@@ -5,6 +5,7 @@ import styled from "styled-components";
 import { motion, AnimatePresence, LayoutGroup } from "framer-motion";
 import imageUrl from "../assets/logo.png";
 import { useLocation } from "react-router-dom";
+import { fadeIn } from "../animations";
 
 //Components
 import Game from "../components/Game";
@@ -26,7 +27,7 @@ const Home = () => {
   );
   return (
     <div>
-      <GameList>
+      <GameList variants={fadeIn} initial="hidden" animate="show">
         <LayoutGroup type="crossfade">
           <AnimatePresence>
             {pathId && <GameDetail pathId={pathId} />}
