@@ -5,6 +5,21 @@ const GlobalStyles = createGlobalStyle`
         margin:0;
         padding:0;
         box-sizing:border-box;
+        transition: all 0.5s ease-in-out;
+    }
+
+    :root { 
+        --body_background: white;
+        --body_color: black;
+        --box_shadow: rgba(0, 0, 0, 0.5) 0px 3px 8px;
+        --background_img: url(/src/assets/bg_light.png);
+
+    }
+    [data-theme="dark"] {
+        --body_background: #18191a;
+        --body_color: white;
+        --box_shadow: rgba(177, 1, 1, 0.5) 0px 3px 8px;
+        --background_img: url(src/assets/bg_dark.jpg);
     }
     
     html {
@@ -19,15 +34,18 @@ const GlobalStyles = createGlobalStyle`
     body {
         font-family: 'Roboto', sans-serif;
         width: 100%;
+        background-color: var(--body_background)
     }
 
     h1, h2 {
         font-family: 'Righteous', cursive;
+        color: white;
 
     }
 
+
     h1 {
-        font-size: 3rem;
+        font-size: 5rem;
 
     }
     
@@ -46,7 +64,7 @@ const GlobalStyles = createGlobalStyle`
 
     a {
         text-decoration: none;
-        color: black;
+        color: var(--body_color);
     }
 
     input {

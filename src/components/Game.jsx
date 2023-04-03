@@ -41,10 +41,11 @@ const StyledGame = styled(motion.div)`
   justify-content: center;
   align-items: center;
   min-height: 30vh;
-  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  box-shadow: var(--box_shadow);
   text-align: center;
   border-radius: 1rem;
   cursor: pointer;
+  overflow: hidden;
   img {
     height: 100%;
     border-radius: 0rem 0rem 1rem 1rem;
