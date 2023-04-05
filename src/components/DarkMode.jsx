@@ -44,6 +44,10 @@ const StyledDarkMode = styled.div`
   position: absolute;
   right: 0;
   padding: 3rem 10rem;
+  @media (max-width: 768px) {
+    padding: 3rem;
+    top: 0;
+  }
 `;
 
 const StyledInput = styled.input`
@@ -100,7 +104,7 @@ const StyledLabel = styled.label`
   }
   svg.sun {
     left: 5px;
-    fill: rgb(177, 1, 1);
+    fill: rgb(202, 172, 0);
     transition: 0.3s;
   }
   svg.moon {

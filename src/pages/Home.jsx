@@ -3,7 +3,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { loadGames } from "../actions/gamesAction";
 import styled from "styled-components";
 import { motion, AnimatePresence, LayoutGroup } from "framer-motion";
-import imageUrl from "../assets/logo.png";
 import { useLocation } from "react-router-dom";
 import { fadeIn } from "../animations";
 
@@ -27,7 +26,12 @@ const Home = () => {
   );
   return (
     <div>
-      <GameList variants={fadeIn} initial="hidden" animate="show">
+      <GameList
+        variants={fadeIn}
+        initial="hidden"
+        animate="show"
+        id="games-section"
+      >
         <LayoutGroup type="crossfade">
           <AnimatePresence>
             {pathId && <GameDetail pathId={pathId} />}
@@ -92,11 +96,14 @@ const Home = () => {
 
 const GameList = styled(motion.div)`
   padding: 0rem 10rem;
-  @media (max-width: 768px) {
-    padding: 0rem 5rem;
-  }
   h2 {
     padding: 5rem 0rem;
+  }
+  @media (max-width: 768px) {
+    padding: 1rem;
+    h2 {
+      padding: 2rem 0rem;
+    }
   }
 `;
 
@@ -107,7 +114,8 @@ const Games = styled(motion.div)`
   grid-column-gap: 3rem;
   grid-row-gap: 5rem;
   @media (max-width: 768px) {
-    grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+    grid-row-gap: 2.5rem;
   }
 `;
 

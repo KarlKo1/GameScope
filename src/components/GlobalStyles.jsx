@@ -1,4 +1,6 @@
 import { createGlobalStyle } from "styled-components";
+import bgLight from "../assets/bg_light.png";
+import bgDark from "../assets/bg_dark.jpg";
 
 const GlobalStyles = createGlobalStyle`
     * {
@@ -12,17 +14,20 @@ const GlobalStyles = createGlobalStyle`
         --body_background: white;
         --body_color: black;
         --box_shadow: rgba(0, 0, 0, 0.5) 0px 3px 8px;
-        --background_img: url(/src/assets/bg_light.png);
+        --background_img: url(${bgLight});
+        --card_color: #b10101;
 
     }
     [data-theme="dark"] {
         --body_background: #18191a;
         --body_color: white;
         --box_shadow: rgba(177, 1, 1, 0.5) 0px 3px 8px;
-        --background_img: url(src/assets/bg_dark.jpg);
+        --background_img: url(${bgDark});
+        --card_color: #b10101;
     }
     
     html {
+        scroll-behavior: smooth;
         &::-webkit-scrollbar{
             width: 0.5rem;
         }
@@ -39,26 +44,28 @@ const GlobalStyles = createGlobalStyle`
 
     h1, h2 {
         font-family: 'Righteous', cursive;
-        color: white;
 
     }
 
 
     h1 {
-        font-size: 5rem;
+        font-size: clamp(1rem, 8.5vw, 8rem);
+        color: white;
+
 
     }
     
     h2 {
-        font-size: 2rem;
+        font-size: clamp(1.5rem, 2.5vw, 2rem); 
+        color:var(--body_color);
+
     }
 
     h3 {
-        font-size: 1.25rem;
+        font-size: clamp(1rem, 2.5vw, 2rem); 
     }
     
     p {
-        font-size: 1rem;
         line-height: 200%;
     }
 

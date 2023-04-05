@@ -15,42 +15,39 @@ const Game = ({ name, released, id, image }) => {
     dispatch(loadDetail(id));
   };
   return (
-    <StyledGame
-      layoutId={stringPathId}
-      onClick={loadDetailHandler}
-      variants={popUp}
-      initial="hidden"
-      animate="show"
-    >
-      <Link to={`/game/${id}`}>
+    <Link to={`/game/${id}`}>
+      <StyledGame
+        layoutId={stringPathId}
+        onClick={loadDetailHandler}
+        variants={popUp}
+        initial="hidden"
+        animate="show"
+        style={{
+          background: `url(${smallImage(image, 640)})`,
+          backgroundSize: "cover",
+        }}
+        alt={name}
+      >
         <motion.h3 layoutId={`title ${stringPathId}`}>{name}</motion.h3>
         <p>{released}</p>
-        <motion.img
-          layoutId={`image ${stringPathId}`}
-          src={smallImage(image, 640)}
-          alt={name}
-        />
-      </Link>
-    </StyledGame>
+      </StyledGame>
+    </Link>
   );
 };
 
 const StyledGame = styled(motion.div)`
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
   min-height: 30vh;
   box-shadow: var(--box_shadow);
-  text-align: center;
   border-radius: 1rem;
   cursor: pointer;
   overflow: hidden;
-  img {
-    height: 100%;
-    border-radius: 0rem 0rem 1rem 1rem;
-    object-fit: cover;
-    width: 100%;
+  color: white;
+  padding: 2rem;
+  h3,
+  p {
+    text-shadow: 0 0 3px black;
   }
 `;
 
