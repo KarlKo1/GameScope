@@ -97,9 +97,6 @@ const GameDetail = ({ pathId }) => {
                     <p>({game.rating})</p>
                   </Stars>
                   <Urls>
-                    <a href={game.metacritic_url} target="_blank">
-                      {game.metacritic_url}
-                    </a>
                     <a href={game.website} target="_blank">
                       {game.website}
                     </a>
@@ -166,6 +163,7 @@ const CardShadow = styled(motion.div)`
   top: 0;
   left: 0;
   z-index: 999;
+  padding: 1rem;
   &::-webkit-scrollbar {
     width: 0.5rem;
   }
@@ -191,7 +189,12 @@ const Detail = styled(motion.div)`
 `;
 
 const Stats = styled(motion.div)`
-  height: 50vh;
+  width: 100%;
+  object-fit: cover;
+  object-position: center top;
+  display: block;
+  height: 80vh;
+  background-position: center;
   @media (max-width: 768px) {
     height: 25vh;
     padding: 0;
@@ -200,10 +203,12 @@ const Stats = styled(motion.div)`
 
 const StatsDetail = styled(motion.div)`
   display: flex;
+  justify-content: space-between;
   width: 100%;
   background: rgba(0, 0, 0, 0.4);
   color: white;
   display: flex;
+  padding: 1rem;
   img {
     width: 2rem;
     height: 2rem;
@@ -212,6 +217,12 @@ const StatsDetail = styled(motion.div)`
   a {
     color: white;
     display: block;
+  }
+  @media (max-width: 768px) {
+    img {
+      width: 1rem;
+      height: 1rem;
+    }
   }
 `;
 
@@ -234,6 +245,8 @@ const Info = styled(motion.div)`
 const Platforms = styled(motion.div)`
   display: flex;
   justify-content: space-evenly;
+  width: 75%;
+  flex-wrap: wrap;
   img {
     margin-left: 3rem;
   }
@@ -246,7 +259,12 @@ const Ratings = styled(motion.div)`
   background: rgba(0, 0, 0, 0.6);
   border: 1px solid white;
   padding: 1rem 2rem;
+  margin: 1rem;
   border-radius: 1rem;
+  min-width: 360px;
+  max-width: 25%;
+  position: absolute;
+  top: 30rem;
   div {
     display: flex;
     justify-content: flex-start;

@@ -43,7 +43,7 @@ const DarkMode = () => {
 const StyledDarkMode = styled.div`
   position: absolute;
   right: 0;
-  padding: 3rem 10rem;
+  padding: 3rem;
   @media (max-width: 768px) {
     padding: 3rem;
     top: 0;

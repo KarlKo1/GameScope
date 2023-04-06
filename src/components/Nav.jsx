@@ -1,13 +1,15 @@
-import React from "react";
+import React, { useRef } from "react";
 import styled from "styled-components";
 import { motion } from "framer-motion";
 import { fetchSearch } from "../actions/gamesAction";
 import { useDispatch } from "react-redux";
 import { useState } from "react";
 import { fadeIn } from "../animations";
+import { ReactComponent as Logo } from "../assets/logo.svg";
 import DarkMode from "./DarkMode";
 
 const Nav = () => {
+  const myRef = useRef(null);
   const dispatch = useDispatch();
   const [textInput, setTextInput] = useState("");
   const inputHandler = (e) => {
@@ -17,6 +19,7 @@ const Nav = () => {
     e.preventDefault();
     if (textInput) {
       dispatch(fetchSearch(textInput));
+      executeScroll();
       setTextInput("");
     } else {
       dispatch({ type: "CLEAR_SEARCHED_GAMES" });
@@ -25,13 +28,18 @@ const Nav = () => {
   const clearSearched = () => {
     dispatch({ type: "CLEAR_SEARCHED_GAMES" });
   };
+  const executeScroll = () => {
+    myRef.current.scrollIntoView();
+  };
+
   return (
     <StyledDiv>
       <StyledNav variants={fadeIn} initial="hidden" animate="show">
         <DarkMode />
-        <Logo onClick={clearSearched}>
+        <LogoDiv onClick={clearSearched}>
           <h1>GameScope</h1>
-        </Logo>
+          <Logo />
+        </LogoDiv>
         <SearchDiv>
           <form className="wrapper" onSubmit={submitSearch}>
             <input value={textInput} onChange={inputHandler} type="text" />
@@ -39,7 +47,7 @@ const Nav = () => {
           </form>
         </SearchDiv>
         <ScrollDiv>
-          <a href="#games-section" id="scroll-btn"></a>
+          <a href="#games-section" id="scroll-btn" ref={myRef}></a>
         </ScrollDiv>
       </StyledNav>
     </StyledDiv>
@@ -51,6 +59,8 @@ const StyledDiv = styled(motion.div)`
   background: var(--background_img);
   background-repeat: no-repeat;
   background-size: cover;
+  background-position: center;
+
   padding: 5rem;
   position: relative;
   display: flex;
@@ -59,12 +69,14 @@ const StyledDiv = styled(motion.div)`
   @media (max-width: 768px) {
     padding: 2rem;
     min-height: 50vh;
-    background-position: center;
   }
 `;
 
 const StyledNav = styled(motion.nav)`
-  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 `;
 
 const SearchDiv = styled(motion.div)`
@@ -107,7 +119,7 @@ const SearchDiv = styled(motion.div)`
     border: none;
     padding: 0.75rem 2rem;
     cursor: pointer;
-    background: rgb(177, 1, 1);
+    background: #9e0a0a;
     color: white;
     border-radius: 2rem 2rem 2rem 2rem;
     @media (max-width: 768px) {
@@ -116,12 +128,21 @@ const SearchDiv = styled(motion.div)`
   }
 `;
 
-const Logo = styled(motion.div)`
+const LogoDiv = styled(motion.div)`
   display: flex;
   justify-content: center;
   align-items: center;
   padding: 1rem;
   cursor: pointer;
+
+  h1 {
+    padding-left: 1rem;
+  }
+  @media (max-width: 768px) {
+    Logo {
+      height: 2rem;
+    }
+  }
 `;
 
 const ScrollDiv = styled(motion.div)`
