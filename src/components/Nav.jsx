@@ -46,9 +46,7 @@ const Nav = () => {
             <button type="submit">Search</button>
           </form>
         </SearchDiv>
-        <ScrollDiv>
-          <a href="#games-section" id="scroll-btn" ref={myRef}></a>
-        </ScrollDiv>
+        <ScrollDiv id="scroll-btn" />
       </StyledNav>
     </StyledDiv>
   );
@@ -146,35 +144,31 @@ const LogoDiv = styled(motion.div)`
 `;
 
 const ScrollDiv = styled(motion.div)`
-  #scroll-btn {
+  position: absolute;
+  height: 5em;
+  width: 3.25em;
+  border: 0.3em solid #ffff;
+  margin: auto;
+  left: 0;
+  right: 0;
+  bottom: 2em;
+  border-radius: 3em;
+
+  :before {
     position: absolute;
-    height: 5em;
-    width: 3.25em;
-    border: 0.3em solid #ffff;
+    content: "";
     margin: auto;
     left: 0;
     right: 0;
-    bottom: 2em;
-    border-radius: 3em;
-
-    :before {
-      position: absolute;
-      content: "";
-      margin: auto;
-      left: 0;
-      right: 0;
-      height: 0.6em;
-      width: 0.6em;
-      background-color: #ffff;
-      border-radius: 50%;
-      animation: move-down 2s infinite;
-    }
+    height: 0.6em;
+    width: 0.6em;
+    background-color: #ffff;
+    border-radius: 50%;
+    animation: move-down 2s infinite;
   }
 
   @media (max-width: 768px) {
-    #scroll-btn {
-      display: none;
-    }
+    display: none;
   }
 
   @keyframes move-down {
