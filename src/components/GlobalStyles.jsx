@@ -1,12 +1,13 @@
 import { createGlobalStyle } from "styled-components";
-import bgLight from "../assets/bg_light.jpg";
-import bgDark from "../assets/bg_dark.jpg";
+import bgLight from "../assets/bg_light.webp";
+import bgDark from "../assets/bg_dark.webp";
 
 const GlobalStyles = createGlobalStyle`
     * {
         margin:0;
         padding:0;
         box-sizing:border-box;
+        
     }
 
     :root { 
@@ -38,7 +39,7 @@ const GlobalStyles = createGlobalStyle`
     body {
         font-family: 'Roboto', sans-serif;
         width: 100%;
-        background-color: var(--body_background)
+        background-color: var(--body_background);
     }
 
     h1, h2 {
