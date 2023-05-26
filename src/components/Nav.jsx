@@ -89,6 +89,7 @@ const SearchDiv = styled(motion.div)`
     background-color: white;
     border-radius: 2rem 2rem 2rem 2rem;
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+
     &:focus {
       box-shadow: var(--box_shadow);
     }
@@ -105,6 +106,7 @@ const SearchDiv = styled(motion.div)`
     padding: 0.5rem;
     border: none;
     outline-color: transparent;
+    margin-left: 0.5rem;
     &:focus {
       outline: none;
     }
@@ -139,6 +141,11 @@ const LogoDiv = styled(motion.div)`
   @media (max-width: 768px) {
     Logo {
       height: 2rem;
+    }
+  }
+  @media (max-width: 468px) {
+    svg {
+      width: 50px;
     }
   }
 `;

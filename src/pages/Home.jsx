@@ -97,7 +97,7 @@ const Home = () => {
 const GameList = styled(motion.div)`
   padding: 0rem 10rem;
   h2 {
-    padding: 5rem 0rem;
+    padding: 4rem 0rem 2rem 0rem;
   }
   @media (max-width: 768px) {
     padding: 1rem;

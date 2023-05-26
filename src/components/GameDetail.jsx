@@ -75,13 +75,12 @@ const GameDetail = ({ pathId }) => {
       {!isLoading && (
         <CardShadow className="shadow" onClick={exitDetailHandler}>
           <Detail layoutId={pathId}>
-            <Stats
-              style={{
-                background: `url(${smallImage(game.background_image, 1280)})`,
-                backgroundRepeat: "no-repeat",
-                backgroundSize: "cover",
-              }}
-            >
+            <Stats>
+              <motion.img
+                className="card-top-background-image"
+                src={smallImage(game.background_image, 1280)}
+                alt={game.background_image}
+              />
               <StatsDetail>
                 <div className="rating">
                   <motion.h3 layoutId={`title ${pathId}`}>
@@ -185,6 +184,7 @@ const Detail = styled(motion.div)`
   img {
     width: 100%;
     height: 100%;
+    object-fit: cover;
   }
 `;
 
@@ -195,8 +195,9 @@ const Stats = styled(motion.div)`
   display: block;
   height: 80vh;
   background-position: center;
+  position: relative;
   @media (max-width: 768px) {
-    height: 25vh;
+    height: 50vh;
     padding: 0;
   }
 `;
@@ -209,6 +210,8 @@ const StatsDetail = styled(motion.div)`
   color: white;
   display: flex;
   padding: 1rem;
+  position: absolute;
+  top: 0;
   img {
     width: 2rem;
     height: 2rem;
@@ -264,24 +267,32 @@ const Ratings = styled(motion.div)`
   min-width: 360px;
   max-width: 25%;
   position: absolute;
-  top: 30rem;
+  bottom: 0;
+  @media (max-width: 768px) {
+    min-width: 250px;
+    margin: 0 0 0.5rem 0;
+    padding: 0.25rem 0.75rem;
+  }
   div {
     display: flex;
     justify-content: flex-start;
     align-items: center;
+    @media (max-width: 768px) {
+      justify-content: space-between;
+    }
     p {
       margin: 0.5rem 1rem;
       color: white;
       flex-basis: 50%;
+      @media (max-width: 768px) {
+        margin: 0;
+      }
     }
     .ratings-count-bar {
       background: white;
       height: 0.5rem;
       max-width: 40%;
     }
-  }
-  @media (max-width: 768px) {
-    display: none;
   }
 `;
 
