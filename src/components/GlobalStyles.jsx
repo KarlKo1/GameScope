@@ -16,6 +16,8 @@ const GlobalStyles = createGlobalStyle`
         --box_shadow: rgba(0, 0, 0, 0.5) 0px 3px 8px;
         --background_img: url(${bgLight});
         --card_color: #b10101;
+        --span_color: #0e9bab;
+
 
     }
     [data-theme="dark"] {
@@ -23,7 +25,8 @@ const GlobalStyles = createGlobalStyle`
         --body_color: white;
         --box_shadow: rgba(177, 1, 1, 0.5) 0px 3px 8px;
         --background_img: url(${bgDark});
-        --card_color: #b10101;
+        --card_color: #b10101;      
+        --span_color: #b10101;
     }
     
     html {
@@ -51,12 +54,10 @@ const GlobalStyles = createGlobalStyle`
     h1 {
         font-size: clamp(1rem, 8.5vw, 8rem);
         color: white;
-
-
     }
     
     h2 {
-        font-size: clamp(1.5rem, 2.5vw, 2rem); 
+        font-size: clamp(1.75rem, 2.5vw, 4rem); 
         color:var(--body_color);
 
     }
@@ -78,6 +79,13 @@ const GlobalStyles = createGlobalStyle`
         font-weight: bold;
         font-family: "Roboto", sans-serif;
     }
+
+    span{
+        font-weight: bold;
+        color: var(--span_color);
+    }
+
+    
 `;
 
 export default GlobalStyles;
